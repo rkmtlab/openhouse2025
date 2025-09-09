@@ -63,16 +63,16 @@
     .brand b { font-weight: 900; letter-spacing: .02em; }
     .brand small { color: var(--muted); font-size: .85rem; }
     nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; flex-wrap: wrap; }
-    nav a { display: inline-flex; align-items: center; padding: .55rem .8rem; border-radius: 12px; color: var(--ink-2); text-decoration: none; font-weight: 700; }
+    nav a { display: inline-flex; align-items: center; padding: .55rem .8rem; border-radius: 12px; color: var(--ink-2); text-decoration: none; font-weight: 700; border: 1px solid transparent; transition: background .18s ease, border-color .18s ease; }
     nav a:hover, nav a[aria-current="page"] { background: #fff; border: 1px solid var(--line); }
 
     /* Hero */
-    .hero-inner { display: grid; align-items: center; gap: var(--gap); grid-template-columns: 1.1fr; padding: clamp(28px, 6vw, 80px) 0; }
+    .hero-inner { display: grid; align-items: center; gap: var(--gap); grid-template-columns: 1.1fr; padding: clamp(20px, 5vw, 56px) 0; }
     .eyebrow { display: inline-flex; align-items: center; gap: .6em; font-weight: 800; color: var(--brand-2); }
     .title { font-size: clamp(28px, 5vw, 56px); line-height: 1.12; margin: .1em 0 .2em; font-weight: 900; letter-spacing: .01em; }
     .lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--ink-2); }
 
-    section { padding: clamp(36px, 6vw, 72px) 0; }
+    section { padding: clamp(20px, 4vw, 48px) 0; }
     section h2 { font-size: clamp(22px, 3.2vw, 36px); margin: 0 0 .6em; letter-spacing: .01em; }
     section h3 { font-size: clamp(18px, 2.4vw, 22px); margin: .2em 0 .4em; }
     .list { margin: 0; padding-left: 1.1em; }
@@ -115,7 +115,7 @@
           <li><a href="#venue" data-scroll>会場</a></li>
           <li><a href="#demos" data-scroll>展示内容</a></li>
           <li><a href="#members" data-scroll>メンバー</a></li>
-          <li><a href="#" id="aboutLink">About</a></li>
+          <li><a href="#" id="aboutLink">メッセージ</a></li>
           <li><a class="btn" href="#register" data-scroll>参加登録</a></li>
         </ul>
       </nav>
@@ -194,6 +194,11 @@
                 <li>東京メトロ丸ノ内線　本郷三丁目駅　徒歩8分</li>
                 <li>東京メトロ南北線　東大前駅　徒歩10分</li>
               </ul>
+            </div>
+          </div>
+          <div class="card" aria-label="Google Map: 〒113-0033">
+            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius: var(--radius);">
+              <iframe title="Google Map 〒113-0033" src="https://www.google.com/maps?q=〒113-0033&output=embed" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
             </div>
           </div>
         </div>
