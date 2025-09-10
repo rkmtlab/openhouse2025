@@ -65,7 +65,7 @@
     .brand small { color: var(--muted); font-size: .85rem; }
     nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; flex-wrap: wrap; }
     nav a { display: inline-flex; align-items: center; padding: .55rem .8rem; border-radius: 12px; color: var(--ink-2); text-decoration: none; font-weight: 700; border: 1px solid transparent; transition: background .18s ease, border-color .18s ease; }
-    nav a:hover, nav a[aria-current="page"] { background: #fff; border: 1px solid var(--line); }
+    nav a:not(.btn):hover, nav a[aria-current="page"]:not(.btn) { background: #fff; border: 1px solid var(--line); }
     /* About(メッセージ) link: keep default look when not hovered/active */
     #aboutLink { background: transparent; border-color: transparent; }
     #aboutLink:hover, #aboutLink[aria-current="page"] { background: #fff; border-color: var(--line); }
@@ -110,6 +110,26 @@
     .dialog-body { padding: 20px 22px; }
     .close { background: transparent; border: 0; font-size: 20px; padding: 6px 10px; border-radius: 10px; }
     .close:focus-visible { outline: 3px solid var(--ring); }
+
+    /* 他のナビのみ白背景に（.btn を除外） */
+    nav a:not(.btn):hover,
+    nav a[aria-current="page"]:not(.btn) {
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    /* 参加登録ボタン: 通常時は等サイズ、ホバー時のみ少し大きく。色は常にブランド色 */
+    nav .btn,
+    nav .btn:hover,
+    nav .btn:focus-visible,
+    nav .btn[aria-current="page"] {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+      box-shadow: none;
+      transform: none;
+      outline: none;
+    }
 
     @media (min-width: 960px) {
       .hero-inner { grid-template-columns: 1.1fr .9fr; }
