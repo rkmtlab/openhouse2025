@@ -65,6 +65,9 @@
     nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; flex-wrap: wrap; }
     nav a { display: inline-flex; align-items: center; padding: .55rem .8rem; border-radius: 12px; color: var(--ink-2); text-decoration: none; font-weight: 700; border: 1px solid transparent; transition: background .18s ease, border-color .18s ease; }
     nav a:hover, nav a[aria-current="page"] { background: #fff; border: 1px solid var(--line); }
+    /* About(メッセージ) link: keep default look when not hovered/active */
+    #aboutLink { background: transparent; border-color: transparent; }
+    #aboutLink:hover, #aboutLink[aria-current="page"] { background: #fff; border-color: var(--line); }
 
     /* Hero */
     .hero-inner { display: grid; align-items: center; gap: var(--gap); grid-template-columns: 1.1fr; padding: clamp(20px, 5vw, 56px) 0; }
@@ -128,14 +131,12 @@
     <section id="home" class="hero">
       <div class="container hero-inner">
         <div class="stack">
-          <span class="eyebrow"><span class="tag">Open House 2025</span> 東京大学 本郷キャンパス</span>
-          <h1 class="title">Rekimoto Lab. Ishiguro Lab.<br/>Laboratory Open House</h1>
-          <p class="lead">2025年11月15日(土)・16日(日)／福武ラーニングスタジオ・シアター。Human Augmentation と Internet of Abilities (IoA) に基づく最新の研究デモを公開します。</p>
+          <h1 class="title">Rekimoto Lab. Ishiguro Lab.<br/>Open House 2025</h1>
+          <p class="lead">2025年11月15日(土)・16日(日)／東京大学本郷キャンパス<br/>Human Augmentation と Internet of Abilities (IoA) に基づく<br/>最新の研究デモを公開します。</p>
           <div class="cluster">
             <a class="btn" href="#register" data-scroll>参加登録（Peatix）</a>
             <a class="btn ghost" href="#demos" data-scroll>展示内容を見る</a>
           </div>
-          <p style="margin-top:8px;color:var(--muted);"><small>November 15 (Sat) 13:00–18:00 ／ November 16 (Sun) 11:00–18:00</small></p>
         </div>
         <div class="card stack">
           <h3>開催概要</h3>
@@ -176,18 +177,18 @@
 
     <!-- 会場 / アクセス -->
     <section id="venue">
-      <div class="container grid">
-        <div class="stack">
-          <h2>会場</h2>
-          <div class="card two-col">
-            <div>
+      <div class="container">
+        <h2>会場</h2>
+        <div class="two-col" style="align-items:start; gap: var(--gap);">
+          <div class="stack">
+            <div class="card">
               <h3>会場</h3>
               <ul class="list">
                 <li>福武ラーニングスタジオ</li>
                 <li>福武ラーニングシアター</li>
               </ul>
             </div>
-            <div>
+            <div class="card">
               <h3>アクセス</h3>
               <ul class="list">
                 <li>都営大江戸線　本郷三丁目駅　徒歩7分</li>
@@ -269,7 +270,6 @@
           <h2>参加登録</h2>
           <p>チケット管理は Peatix を予定しています。以下のボタンから外部サイトへ移動してお申し込みください。</p>
           <a class="btn" href="#" aria-disabled="true">Peatix へ（準備中）</a>
-          <p style="color:var(--muted)">お問い合わせ： rkmtlab+openhouse2025atgmail.com（<span class="kbd">at</span> を <span class="kbd">@</span> に置き換えてください）</p>
         </div>
         <div class="card stack">
           <h3>アーカイブ／リンク</h3>
@@ -395,8 +395,13 @@
     const aboutView = document.getElementById('aboutView');
     const main = document.getElementById('main');
     const backHome = document.getElementById('backHome');
-    function showAbout(){ main.hidden = true; aboutView.hidden = false; window.scrollTo({ top: 0 }); }
-    function showHome(){ aboutView.hidden = true; main.hidden = false; document.getElementById('home').scrollIntoView({ behavior:'smooth' }); }
+    function setAboutNavCurrent(isAbout){
+      const about = document.getElementById('aboutLink');
+      if (!about) return;
+      about.setAttribute('aria-current', isAbout ? 'page' : 'false');
+    }
+    function showAbout(){ main.hidden = true; aboutView.hidden = false; setAboutNavCurrent(true); window.scrollTo({ top: 0 }); }
+    function showHome(){ aboutView.hidden = true; main.hidden = false; setAboutNavCurrent(false); document.getElementById('home').scrollIntoView({ behavior:'smooth' }); }
     aboutLink.addEventListener('click', (e)=>{ e.preventDefault(); showAbout(); });
     backHome.addEventListener('click', (e)=>{ e.preventDefault(); showHome(); });
 
