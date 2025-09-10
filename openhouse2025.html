@@ -438,13 +438,26 @@
     const aboutView = document.getElementById('aboutView');
     const main = document.getElementById('main');
     const backHome = document.getElementById('backHome');
+    const headerEl = document.querySelector('header');
     function setAboutNavCurrent(isAbout){
       const about = document.getElementById('aboutLink');
       if (!about) return;
       about.setAttribute('aria-current', isAbout ? 'page' : 'false');
     }
-    function showAbout(){ main.hidden = true; aboutView.hidden = false; setAboutNavCurrent(true); window.scrollTo({ top: 0 }); }
-    function showHome(){ aboutView.hidden = true; main.hidden = false; setAboutNavCurrent(false); document.getElementById('home').scrollIntoView({ behavior:'smooth' }); }
+    function showAbout(){
+      main.hidden = true;
+      aboutView.hidden = false;
+      if (headerEl) headerEl.hidden = true;
+      setAboutNavCurrent(true);
+      window.scrollTo({ top: 0 });
+    }
+    function showHome(){
+      aboutView.hidden = true;
+      main.hidden = false;
+      if (headerEl) headerEl.hidden = false;
+      setAboutNavCurrent(false);
+      document.getElementById('home').scrollIntoView({ behavior:'smooth' });
+    }
     aboutLink.addEventListener('click', (e)=>{ e.preventDefault(); showAbout(); });
     backHome.addEventListener('click', (e)=>{ e.preventDefault(); showHome(); });
 
