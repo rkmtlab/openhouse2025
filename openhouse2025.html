@@ -459,6 +459,119 @@
         padding-bottom: 75%; /* 4:3 */
       }
     }
+
+    /* 開催概要（独立セクション）- 折りたたみ機能追加 */
+    #overview {
+      --preview-height: 80px; /* プレビュー時の高さ */
+      --full-height: 1000px;  /* 完全表示時の高さ（適宜調整） */
+    }
+    
+    /* 開催概要の折りたたみ式表示 */
+    .overview-mobile {
+      display: none;
+    }
+
+    .overview-full {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .overview-toggle {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .overview-toggle .show-less {
+      display: none;
+    }
+
+    .overview-toggle.active .show-more {
+      display: none;
+    }
+
+    .overview-toggle.active .show-less {
+      display: inline;
+    }
+
+    .overview-toggle.active .down-icon {
+      display: none;
+    }
+
+    .overview-toggle.active .up-icon {
+      display: inline;
+    }
+
+    .toggle-icon {
+      margin-left: 4px;
+    }
+
+    .overview-preview {
+      margin-bottom: 0;
+    }
+    
+    .overview-mobile {
+      display: none;
+      margin-top: 16px;
+    }
+    
+    .overview-preview {
+      margin: 0 0 8px;
+      /* 高さを固定してオーバーフローを隠す */
+      max-height: var(--preview-height);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .overview-toggle {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    
+    .overview-toggle:hover {
+      background: var(--brand-2);
+      color: #fff;
+    }
+    
+    .toggle-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      transition: transform .3s ease;
+    }
+    
+    .show-less {
+      display: none;
+    }
+    
+    /* デスクトップ表示では通常通り */
+    @media (min-width: 768px) {
+      .overview-mobile {
+        display: none;
+      }
+      
+      .overview-desktop {
+        display: block;
+      }
+    }
+    
+    /* タイトルの下に線を引く */
+    h2::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--brand), transparent);
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
@@ -514,7 +627,27 @@
       <div class="container">
         <h2>開催概要</h2>
         <div class="card">
-          <p>暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。<br>暦本研究室では、人間や人工物がそれぞれの能力を時間・空間の制約を超えて活用する、Human AugmentationやInternet of Abilities(IoA)という概念を提唱し、様々な研究を展開しています。<br>石黒研究室では、上記コンセプトに加え、自動運転技術と人との関係、自律移動体技術を活用したさまざまなアプリケーションの可能性も探索し，具現化する研究を行っています。<br>オープンハウスでは、これらの考えに基づいた研究成果を中心に、各種研究を展示いたします。<br>なお、暦本研究室は、暦本純一教授の退官に伴い、本年度をもって解散いたします。暦本研究室のオープンハウスは今年が最後となりますので、ぜひお立ち寄りいただけますと幸いです。<br><br>We are pleased to announce that the Rekimoto Laboratory and the Ishiguro Laboratory of the Interfaculty Initiative in Information Studies, The University of Tokyo, will jointly host an Open House.<br>The Rekimoto Laboratory has advanced research under the concepts of Human Augmentation and the Internet of Abilities (IoA), which seek to enable both humans and artifacts to transcend the limitations of time and space in order to fully realize their potential.<br>The Ishiguro Laboratory, in addition to engaging with these concepts, conducts research that explores and materializes the possibilities of autonomous driving technologies, human–technology interaction, and applications utilizing autonomous mobile systems.<br>At the Open House, a wide range of research achievements will be presented, with particular emphasis on projects grounded in these approaches.<br>Please be advised that the Rekimoto Laboratory will be dissolved at the end of this academic year following the retirement of Professor Jun Rekimoto. Accordingly, this year’s event will mark the final Open House of the Rekimoto Laboratory. We would be most honored by your attendance.</p>
+          <!-- モバイル用の折りたたみ表示 -->
+          <div class="overview-mobile">
+            <p class="overview-preview">暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。</p>
+            <button class="btn ghost overview-toggle" type="button">
+              <span class="show-more">続きを読む</span>
+              <span class="show-less">閉じる</span>
+              <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path class="down-icon" d="M6 9l6 6 6-6"></path>
+                <path class="up-icon" d="M6 15l6-6 6 6" style="display:none"></path>
+              </svg>
+            </button>
+            <div class="overview-full">
+              <p>暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。<br>暦本研究室では、人間や人工物がそれぞれの能力を時間・空間の制約を超えて活用する、Human AugmentationやInternet of Abilities(IoA)という概念を提唱し、様々な研究を展開しています。<br>石黒研究室では、上記コンセプトに加え、自動運転技術と人との関係、自律移動体技術を活用したさまざまなアプリケーションの可能性も探索し，具現化する研究を行っています。<br>オープンハウスでは、これらの考えに基づいた研究成果を中心に、各種研究を展示いたします。<br>なお、暦本研究室は、暦本純一教授の退官に伴い、本年度をもって解散いたします。暦本研究室のオープンハウスは今年が最後となりますので、ぜひお立ち寄りいただけますと幸いです。<br><br>We are pleased to announce that the Rekimoto Laboratory and the Ishiguro Laboratory of the Interfaculty Initiative in Information Studies, The University of Tokyo, will jointly host an Open House.<br>The Rekimoto Laboratory has advanced research under the concepts of Human Augmentation and the Internet of Abilities (IoA), which seek to enable both humans and artifacts to transcend the limitations of time and space in order to fully realize their potential.<br>The Ishiguro Laboratory, in addition to engaging with these concepts, conducts research that explores and materializes the possibilities of autonomous driving technologies, human–technology interaction, and applications utilizing autonomous mobile systems.<br>At the Open House, a wide range of research achievements will be presented, with particular emphasis on projects grounded in these approaches.<br>Please be advised that the Rekimoto Laboratory will be dissolved at the end of this academic year following the retirement of Professor Jun Rekimoto. Accordingly, this year’s event will mark the final Open House of the Rekimoto Laboratory. We would be most honored by your attendance.</p>
+            </div>
+          </div>
+          
+          <!-- デスクトップ用の通常表示 -->
+          <div class="overview-desktop">
+            <p>暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。<br>暦本研究室では、人間や人工物がそれぞれの能力を時間・空間の制約を超えて活用する、Human AugmentationやInternet of Abilities(IoA)という概念を提唱し、様々な研究を展開しています。<br>石黒研究室では、上記コンセプトに加え、自動運転技術と人との関係、自律移動体技術を活用したさまざまなアプリケーションの可能性も探索し，具現化する研究を行っています。<br>オープンハウスでは、これらの考えに基づいた研究成果を中心に、各種研究を展示いたします。<br>なお、暦本研究室は、暦本純一教授の退官に伴い、本年度をもって解散いたします。暦本研究室のオープンハウスは今年が最後となりますので、ぜひお立ち寄りいただけますと幸いです。<br><br>We are pleased to announce that the Rekimoto Laboratory and the Ishiguro Laboratory of the Interfaculty Initiative in Information Studies, The University of Tokyo, will jointly host an Open House.<br>The Rekimoto Laboratory has advanced research under the concepts of Human Augmentation and the Internet of Abilities (IoA), which seek to enable both humans and artifacts to transcend the limitations of time and space in order to fully realize their potential.<br>The Ishiguro Laboratory, in addition to engaging with these concepts, conducts research that explores and materializes the possibilities of autonomous driving technologies, human–technology interaction, and applications utilizing autonomous mobile systems.<br>At the Open House, a wide range of research achievements will be presented, with particular emphasis on projects grounded in these approaches.<br>Please be advised that the Rekimoto Laboratory will be dissolved at the end of this academic year following the retirement of Professor Jun Rekimoto. Accordingly, this year’s event will mark the final Open House of the Rekimoto Laboratory. We would be most honored by your attendance.</p>
+          </div>
+          
           <div class="cluster" style="margin-top:8px; gap:8px; flex-wrap:wrap">
             <span class="tag">Human Augmentation</span>
             <span class="tag">Internet of Abilities</span>
@@ -905,6 +1038,25 @@
       if (!inDialog) dialog.close();
     });
 
+    // 開催概要の折りたたみ機能
+    document.addEventListener('DOMContentLoaded', function() {
+      const overviewToggle = document.querySelector('.overview-toggle');
+      const overviewFull = document.querySelector('.overview-full');
+      
+      if (overviewToggle && overviewFull) {
+        overviewToggle.addEventListener('click', function() {
+          this.classList.toggle('active');
+          
+          if (this.classList.contains('active')) {
+            // 開く
+            overviewFull.style.maxHeight = overviewFull.scrollHeight + 'px';
+          } else {
+            // 閉じる
+            overviewFull.style.maxHeight = '0px';
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
