@@ -70,6 +70,23 @@
     #aboutLink { background: transparent; border-color: transparent; }
     #aboutLink:hover, #aboutLink[aria-current="page"] { background: #fff; border-color: var(--line); }
 
+    main {
+      /* モバイル向けに多めのパディング */
+      padding-top: 200px;
+    }
+
+    /* デバイスサイズに応じてパディングを調整 */
+    @media (min-width: 768px) {
+      main {
+        padding-top: 85px; /* タブレットサイズ */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      main {
+        padding-top: 70px; /* デスクトップサイズ */
+      }
+    }
     /* About(メッセージ)リンクをボタンスタイルに変更 - 参加登録と同じデザイン */
     #aboutLink {
       background: var(--bg);
