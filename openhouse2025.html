@@ -210,24 +210,108 @@
       outline: none;
     }
 
-    @media (min-width: 960px) {
-      .hero-inner { grid-template-columns: 1.1fr .9fr; }
-      .two-col { grid-template-columns: 1.1fr .9fr; }
+    /* ハンバーガーメニュー用のスタイル */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 60;
     }
-
-    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+    
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--ink);
+      transition: all 0.3s ease;
+    }
+    
+    /* モバイル向けナビゲーション */
+    @media (max-width: 767px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 60px 20px 20px;
+        z-index: 55;
+        border-left: 1px solid var(--line);
+        transition: right 0.3s ease;
+        box-shadow: var(--shadow);
+      }
+      
+      nav ul.active {
+        right: 0;
+      }
+      
+      nav li {
+        width: 100%;
+      }
+      
+      nav a {
+        display: block;
+        width: 100%;
+        padding: 12px 16px;
+        margin: 4px 0;
+      }
+      
+      /* ハンバーガーメニューが開いている時のアイコン */
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      
+      /* オーバーレイ */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 50;
+      }
+      
+      .overlay.active {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
   <a class="skip" href="#home">メインへ移動</a>
 
-  <!-- Header / simple in-page nav (no hamburger) -->
+  <!-- Header / Nav with hamburger menu for mobile -->
   <header>
     <div class="container nav">
       <div class="brand">
         <b>Rekimoto Lab. × Ishiguro Lab.</b>
         <small>Open House 2025</small>
       </div>
+      <button class="menu-toggle" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav aria-label="メイン">
         <ul>
           <li><a href="#home" data-scroll>概要</a></li>
@@ -240,6 +324,7 @@
         </ul>
       </nav>
     </div>
+    <div class="overlay"></div>
   </header>
 
   <!-- MAIN (single page) -->
@@ -481,6 +566,30 @@
   </dialog>
 
   <script>
+    // ハンバーガーメニュー制御
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    const overlay = document.querySelector('.overlay');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // メニュー内のリンククリック時にメニューを閉じる
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    });
+    
     // In-page nav current state
     const sections = ["home","schedule","venue","demos","members","register"]; // used for aria-current
     const setCurrent = () => {
