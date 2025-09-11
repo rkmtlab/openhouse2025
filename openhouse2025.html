@@ -70,6 +70,25 @@
     #aboutLink { background: transparent; border-color: transparent; }
     #aboutLink:hover, #aboutLink[aria-current="page"] { background: #fff; border-color: var(--line); }
 
+    /* About(メッセージ)リンクをボタンスタイルに変更 - 参加登録と同じデザイン */
+    #aboutLink {
+      background: var(--brand-2);
+      color: #fff;
+      border-color: var(--brand-2);
+      border-radius: 12px;
+      padding: .55rem .8rem;
+      font-weight: 700;
+      box-shadow: none;
+      font-size: 1rem; /* 通常のフォントサイズに戻す */
+    }
+
+    #aboutLink:hover, 
+    #aboutLink[aria-current="page"] {
+      background: var(--brand-2);
+      color: #fff;
+      border-color: var(--brand-2);
+    }
+
     /* Header nav button align with links */
     nav .btn {
       padding: .55rem .8rem;          /* navリンクと同じ */
@@ -111,9 +130,9 @@
     .close { background: transparent; border: 0; font-size: 20px; padding: 6px 10px; border-radius: 10px; }
     .close:focus-visible { outline: 3px solid var(--ring); }
 
-    /* 他のナビのみ白背景に（.btn を除外） */
-    nav a:not(.btn):hover,
-    nav a[aria-current="page"]:not(.btn) {
+    /* 他のナビのみ白背景に（.btnとaboutLinkを除外） */
+    nav a:not(.btn):not(#aboutLink):hover,
+    nav a[aria-current="page"]:not(.btn):not(#aboutLink) {
       background: #fff;
       border: 1px solid var(--line);
     }
