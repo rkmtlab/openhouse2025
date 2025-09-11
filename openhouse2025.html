@@ -72,9 +72,9 @@
 
     /* About(メッセージ)リンクをボタンスタイルに変更 - 参加登録と同じデザイン */
     #aboutLink {
-      background: var(--brand-2);
-      color: #fff;
-      border-color: var(--brand-2);
+      background: var(--bg);
+      color: var(--ink);
+      border-color: var(--muted);
       border-radius: 12px;
       padding: .55rem .8rem;
       font-weight: 700;
@@ -142,6 +142,49 @@
     nav .btn:hover,
     nav .btn:focus-visible,
     nav .btn[aria-current="page"] {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+      box-shadow: none;
+      transform: none;
+      outline: none;
+    }
+
+    /* 参加登録ボタンと同じスタイルをメッセージにも適用（通常時） */
+    nav .btn,
+    nav .btn[aria-current="page"] {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+      box-shadow: none;
+      transform: none;
+      outline: none;
+    }
+
+    /* メッセージボタン通常時（白背景、ブランド色テキスト） */
+    #aboutLink,
+    #aboutLink[aria-current="page"] {
+      background: var(--bg);
+      color: var(--brand);
+      border-color: var(--line);
+      box-shadow: none;
+      transform: none;
+      outline: none;
+    }
+
+    /* 参加登録ボタンのホバー効果（グレー→白） */
+    nav .btn:hover,
+    nav .btn:focus-visible {
+      background: #fff;
+      color: var(--brand);
+      border-color: var(--line);
+      box-shadow: none;
+      transform: none;
+      outline: none;
+    }
+
+    /* メッセージボタンのホバー効果（白→グレー） */
+    #aboutLink:hover {
       background: var(--brand);
       color: #fff;
       border-color: var(--brand);
