@@ -466,24 +466,39 @@
       --full-height: 1000px;  /* 完全表示時の高さ（適宜調整） */
     }
     
-    /* 開催概要の折りたたみ式表示 */
+    /* 開催概要の折りたたみ式表示 - 重複を解消 */
     .overview-mobile {
-      display: none;
+      display: none; /* デフォルトでは非表示 */
+    }
+
+    .overview-desktop {
+      display: block; /* デフォルトではPC表示 */
     }
 
     .overview-full {
-      max-height: 0;
+      max-height: 0; /* 初期状態では閉じている */
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.5s ease; /* アニメーション時間を長めに */
+    }
+
+    .overview-preview {
+      margin: 0 0 8px;
+      position: relative;
     }
 
     .overview-toggle {
       width: 100%;
       justify-content: center;
-      margin-top: 8px;
+      margin-top: 12px;
       padding: 8px;
       border: 1px solid var(--line);
       border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .overview-toggle:hover {
+      background: var(--brand-2);
+      color: #fff;
     }
 
     .overview-toggle .show-less {
@@ -498,6 +513,18 @@
       display: inline;
     }
 
+    .toggle-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      transition: transform .3s ease;
+    }
+
+    /* アイコン切り替え用のスタイル */
+    .overview-toggle .up-icon {
+      display: none;
+    }
+
     .overview-toggle.active .down-icon {
       display: none;
     }
@@ -506,60 +533,14 @@
       display: inline;
     }
 
-    .toggle-icon {
-      margin-left: 4px;
-    }
-
-    .overview-preview {
-      margin-bottom: 0;
-    }
-    
-    .overview-mobile {
-      display: none;
-      margin-top: 16px;
-    }
-    
-    .overview-preview {
-      margin: 0 0 8px;
-      /* 高さを固定してオーバーフローを隠す */
-      max-height: var(--preview-height);
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .overview-toggle {
-      width: 100%;
-      justify-content: center;
-      margin-top: 8px;
-      padding: 8px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-    }
-    
-    .overview-toggle:hover {
-      background: var(--brand-2);
-      color: #fff;
-    }
-    
-    .toggle-icon {
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
-      transition: transform .3s ease;
-    }
-    
-    .show-less {
-      display: none;
-    }
-    
-    /* デスクトップ表示では通常通り */
-    @media (min-width: 768px) {
-      .overview-mobile {
-        display: none;
+    /* モバイル表示時のみ折りたたみ表示、PCでは通常表示 */
+    @media (max-width: 767px) {
+      .overview-desktop {
+        display: none; /* PCバージョンを非表示 */
       }
       
-      .overview-desktop {
-        display: block;
+      .overview-mobile {
+        display: block; /* モバイルバージョンを表示 */
       }
     }
     
@@ -1038,24 +1019,53 @@
       if (!inDialog) dialog.close();
     });
 
-    // 開催概要の折りたたみ機能
+    // 開催概要の折りたたみ機能 - 改善版
     document.addEventListener('DOMContentLoaded', function() {
       const overviewToggle = document.querySelector('.overview-toggle');
       const overviewFull = document.querySelector('.overview-full');
       
       if (overviewToggle && overviewFull) {
+        // 初期状態を明示的に設定（モバイル表示時）
+        overviewFull.style.maxHeight = '0px';
+        
         overviewToggle.addEventListener('click', function() {
           this.classList.toggle('active');
           
           if (this.classList.contains('active')) {
-            // 開く
+            // 開く - スクロールハイトを使用
             overviewFull.style.maxHeight = overviewFull.scrollHeight + 'px';
+            
+            // アニメーション後に高さ制限を解除（長いコンテンツ対応）
+            setTimeout(() => {
+              if (this.classList.contains('active')) {
+                overviewFull.style.maxHeight = '2000px'; // 十分な高さを確保
+              }
+            }, 500);
           } else {
             // 閉じる
             overviewFull.style.maxHeight = '0px';
           }
         });
       }
+      
+      // ウィンドウ幅変更時の処理（レスポンシブ対応）
+      function handleResize() {
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        
+        if (overviewFull) {
+          if (!isMobile) {
+            // PC表示の場合は高さ制限を解除
+            overviewFull.style.maxHeight = '';
+          } else if (isMobile && overviewToggle && !overviewToggle.classList.contains('active')) {
+            // モバイル表示でボタンが非アクティブなら閉じる
+            overviewFull.style.maxHeight = '0px';
+          }
+        }
+      }
+      
+      window.addEventListener('resize', handleResize);
+      // 初期化時にも実行
+      handleResize();
     });
   </script>
 </body>
