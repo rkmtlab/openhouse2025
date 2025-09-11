@@ -365,6 +365,110 @@
         width: 80%;
       }
     }
+
+    /* 会場セクションのスタイル調整 */
+    #venue {
+      background: var(--bg);
+      padding: clamp(20px, 4vw, 48px) 0;
+    }
+
+    #venue h2 {
+      font-size: clamp(22px, 3.2vw, 36px);
+      margin: 0 0 .6em;
+      letter-spacing: .01em;
+      position: relative;
+      display: inline-block;
+    }
+
+    #venue h2::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--brand);
+    }
+
+    /* 会場情報のレイアウト */
+    .venue-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    /* タブレット以上のサイズでは2列表示 */
+    @media (min-width: 768px) {
+      .venue-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* 区切り線（モバイル表示時のみ） */
+    .venue-divider {
+      margin: 16px 0;
+      border: none;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (min-width: 768px) {
+      .venue-divider {
+        display: none;
+      }
+    }
+
+    /* 会場カラムのスタイル */
+    .venue-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* 地図コンテナ */
+    .map-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    /* 地図キャプション */
+    .map-caption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* 見出しの調整 */
+    .venue-column h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .venue-column h4 {
+      margin: 16px 0 8px;
+      font-size: 1.1rem;
+      color: var(--brand-2);
+    }
+
+    /* スマホ・タブレット向けに地図を大きく表示 */
+    @media (max-width: 767px) {
+      .map-container {
+        padding-bottom: 75%; /* 4:3 */
+      }
+    }
   </style>
 </head>
 <body>
@@ -459,56 +563,53 @@
     <section id="venue">
       <div class="container">
         <h2>会場</h2>
-        <div class="two-col" style="align-items:start; gap: var(--gap);">
-          <!-- 福武ホール情報 -->
-          <div class="stack">
-            <div class="card">
+        <div class="card">
+          <div class="venue-container">
+            <!-- メイン会場情報 -->
+            <div class="venue-column">
               <h3>メイン会場</h3>
               <ul class="list">
                 <li>福武ラーニングスタジオ</li>
                 <li>福武ラーニングシアター</li>
                 <li>（東京大学本郷キャンパス内、赤門から徒歩約5分）</li>
               </ul>
-            </div>
-            <div class="card">
-              <h3>アクセス</h3>
+              
+              <h4>アクセス</h4>
               <ul class="list">
                 <li>都営大江戸線　本郷三丁目駅　徒歩7分</li>
                 <li>東京メトロ丸ノ内線　本郷三丁目駅　徒歩8分</li>
                 <li>東京メトロ南北線　東大前駅　徒歩10分</li>
               </ul>
-            </div>
-            <div class="card" aria-label="Google Map: 福武ホール">
-              <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius: var(--radius);">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6479.206256940737!2d139.75748137470552!3d35.71138277257748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c307e317f31%3A0xa5a4e210ad6b021e!2z5oOF5aCx5a2m55Kw44O756aP5q2m44Ob44O844Or!5e0!3m2!1sja!2sjp!4v1757561396802!5m2!1sja!2sjp" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              
+              <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6479.206256940737!2d139.75748137470552!3d35.71138277257748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c307e317f31%3A0xa5a4e210ad6b021e!2z5oOF5aCx5a2m55Kw44O756aP5q2m44Ob44O844Or!5e0!3m2!1sja!2sjp!4v1757561396802!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p class="map-caption">福武ラーニングスタジオ/福武ラーニングシアター</p>
               </div>
-              <p style="margin-top:12px; font-size:0.9rem; color:var(--muted);">福武ラーニングスタジオ/福武ラーニングシアター</p>
             </div>
-          </div>
 
-          <!-- Sky Presentation Room情報 -->
-          <div class="stack">
-            <div class="card">
+            <!-- 区切り線（モバイル表示時のみ） -->
+            <hr class="venue-divider">
+
+            <!-- Sky Presentation Room情報 -->
+            <div class="venue-column">
               <h3>懇親会会場</h3>
               <ul class="list">
                 <li>Sky Presentation Room</li>
                 <li>（2号館9階92B）</li>
                 <li>11月16日(日) 18:30〜</li>
               </ul>
-            </div>
-            <div class="card">
-              <h3>アクセス</h3>
+              
+              <h4>アクセス</h4>
               <ul class="list">
                 <li>福武ホールから徒歩約3分</li>
                 <li>工学部2号館9階</li>
                 <li>エレベーターで9階へお上がりください</li>
               </ul>
-            </div>
-            <div class="card" aria-label="Google Map: Sky Presentation Room">
-              <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius: var(--radius);">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0508301896083!2d139.76128832935974!3d35.714306996262205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c309ddb47e9%3A0xac0e520bbd73378b!2z5p2x5Lqs5aSn5a2m5bel5a2m6YOo77yS5Y-356S-!5e0!3m2!1sja!2sjp!4v1694737302136!5m2!1sja!2sjp" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              
+              <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0508301896083!2d139.76128832935974!3d35.714306996262205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c309ddb47e9%3A0xac0e520bbd73378b!2z5p2x5Lqs5aSn5a2m5bel5a2m6YOo77yS5Y-356S-!5e0!3m2!1sja!2sjp!4v1694737302136!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p class="map-caption">Sky Presentation Room（工学部2号館9階）</p>
               </div>
-              <p style="margin-top:12px; font-size:0.9rem; color:var(--muted);">Sky Presentation Room（工学部2号館9階）</p>
             </div>
           </div>
         </div>
