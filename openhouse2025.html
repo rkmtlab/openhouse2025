@@ -59,7 +59,7 @@
     /* Header */
     /* header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(10px); background: color-mix(in srgb, var(--bg) 75%, #fff 25%); border-bottom: 1px solid rgba(31,41,55,.08); } */
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(10px); background: color-mix(in srgb, var(--bg) 75%, #fff 25%); border-bottom: 1px solid rgba(31,41,55,.08); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: .6rem 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .6rem 0; position: relative; }
     .brand { display: grid; gap: 2px; }
     .brand b { font-weight: 900; letter-spacing: .02em; }
     .brand small { color: var(--muted); font-size: .85rem; }
@@ -300,6 +300,19 @@
         display: block;
       }
     }
+
+    /* ヘッダーのブランド部分のリンクスタイル */
+    .brand a {
+      text-decoration: none;
+      color: inherit;
+      display: grid;
+      gap: 2px;
+      transition: opacity 0.2s ease;
+    }
+
+    .brand a:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
@@ -309,8 +322,10 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <b>Rekimoto Lab. × Ishiguro Lab.</b>
-        <small>Open House 2025</small>
+        <a href="#home" data-scroll style="text-decoration: none; color: inherit;">
+          <b>Rekimoto Lab. × Ishiguro Lab.</b>
+          <small>Open House 2025</small>
+        </a>
       </div>
       <button class="menu-toggle" aria-label="メニュー">
         <span></span>
@@ -319,7 +334,7 @@
       </button>
       <nav aria-label="メイン">
         <ul>
-          <li><a href="#home" data-scroll>概要</a></li>
+          <li><a href="#overview" data-scroll>概要</a></li>
           <li><a href="#schedule" data-scroll>スケジュール</a></li>
           <li><a href="#venue" data-scroll>会場</a></li>
           <li><a href="#demos" data-scroll>展示内容</a></li>
@@ -345,8 +360,14 @@
             <a class="btn ghost" href="#demos" data-scroll>展示内容を見る</a>
           </div>
         </div>
-        <div class="card stack">
-          <h3>開催概要</h3>
+      </div>
+    </section>
+
+    <!-- 開催概要（独立セクション） -->
+    <section id="overview">
+      <div class="container">
+        <h2>開催概要</h2>
+        <div class="card">
           <p>暦本研究室では、人間や人工物の能力を時間・空間の境界を越えて拡張する Human Augmentation / IoA の概念に基づき研究を展開しています。本オープンハウスでは、その最新成果をデモ・ポスター形式で公開します。</p>
           <div class="cluster" style="margin-top:8px; gap:8px; flex-wrap:wrap">
             <span class="tag">Human Augmentation</span>
@@ -596,7 +617,7 @@
     });
     
     // In-page nav current state
-    const sections = ["home","schedule","venue","demos","members","register"]; // used for aria-current
+    const sections = ["home","overview", "schedule","venue","demos","members","register"]; // used for aria-current
     const setCurrent = () => {
       if (typeof main !== 'undefined' && main && main.hidden) return;
       const y = window.scrollY + 120; // offset for sticky header
