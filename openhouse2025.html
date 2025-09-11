@@ -366,19 +366,13 @@
       }
     }
 
-    /* 会場セクションのスタイル調整 */
+    /* 会場セクションのスタイル調整 - 他のセクションと統一 */
     #venue {
       background: var(--bg);
       padding: clamp(20px, 4vw, 48px) 0;
     }
-
-    #venue h2 {
-      font-size: clamp(22px, 3.2vw, 36px);
-      margin: 0 0 .6em;
-      letter-spacing: .01em;
-      position: relative;
-      display: inline-block;
-    }
+    
+    /* 会場セクションの個別スタイルを削除し、グローバルなh2スタイルに準拠 */
 
     /* 会場情報のレイアウト */
     .venue-container {
