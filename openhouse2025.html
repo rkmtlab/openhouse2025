@@ -296,6 +296,8 @@
     @media (min-width: 1024px) {
       .footer-grid {
         grid-template-columns: 1fr 1fr 1fr;
+        align-items: start;
+        column-gap: 32px;
       }
     }
 
@@ -312,8 +314,8 @@
     }
 
     /* SNSリンク（アイコン＋テキスト横並び） */
-    .socials { display: grid; gap: 8px; }
-    .social-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; }
+    .socials { display: grid; gap: 10px; }
+    .social-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; line-height: 1.6; font-weight: 500; }
     .social-link:hover { color: var(--brand); text-decoration: underline; }
     .social-link svg { width: 20px; height: 20px; }
 
