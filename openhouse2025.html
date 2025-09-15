@@ -292,10 +292,10 @@
       }
     }
 
-    /* デスクトップサイズでは4列表示 */
+    /* デスクトップサイズでは3列を均等表示 */
     @media (min-width: 1024px) {
       .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
       }
     }
 
@@ -310,6 +310,12 @@
       color: var(--brand);
       text-decoration: underline;
     }
+
+    /* SNSリンク（アイコン＋テキスト横並び） */
+    .socials { display: grid; gap: 8px; }
+    .social-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; }
+    .social-link:hover { color: var(--brand); text-decoration: underline; }
+    .social-link svg { width: 20px; height: 20px; }
 
     /* 中央寄せの大きめボタン */
     .centered-btn {
@@ -549,7 +555,7 @@
     <section id="home" class="hero">
       <div class="container hero-inner">
         <div class="stack">
-          <h1 class="title">Rekimoto Lab. Ishiguro Lab.<br/>Open House 2025</h1>
+          <h1 class="title">Rekimoto Lab. × Ishiguro Lab.<br/>Open House 2025</h1>
           <p class="lead">2025年11月15日(土)・16日(日)／東京大学本郷キャンパス<br/>Human Augmentation と Internet of Abilities (IoA) 、自律移動体技術に基づく<br/>最新の研究デモを公開します。</p>
           <div class="cluster">
             <a class="btn" href="#register" data-scroll>参加登録（Peatix）</a>
@@ -576,7 +582,7 @@
               </svg>
             </button>
             <div class="overview-full">
-              <p>暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。<br>暦本研究室では、人間や人工物がそれぞれの能力を時間・空間の制約を超えて活用する、Human AugmentationやInternet of Abilities(IoA)という概念を提唱し、様々な研究を展開しています。<br>石黒研究室では、上記コンセプトに加え、自動運転技術と人との関係、自律移動体技術を活用したさまざまなアプリケーションの可能性も探索し，具現化する研究を行っています。<br>オープンハウスでは、これらの考えに基づいた研究成果を中心に、各種研究を展示いたします。<br>なお、暦本研究室は、暦本純一教授の退官に伴い、本年度をもって解散いたします。暦本研究室のオープンハウスは今年が最後となりますので、ぜひお立ち寄りいただけますと幸いです。<br><br>We are pleased to announce that the Rekimoto Laboratory and the Ishiguro Laboratory of the Interfaculty Initiative in Information Studies, The University of Tokyo, will jointly host an Open House.<br>The Rekimoto Laboratory has advanced research under the concepts of Human Augmentation and the Internet of Abilities (IoA), which seek to enable both humans and artifacts to transcend the limitations of time and space in order to fully realize their potential.<br>The Ishiguro Laboratory, in addition to engaging with these concepts, conducts research that explores and materializes the possibilities of autonomous driving technologies, human–technology interaction, and applications utilizing autonomous mobile systems.<br>At the Open House, a wide range of research achievements will be presented, with particular emphasis on projects grounded in these approaches.<br>Please be advised that the Rekimoto Laboratory will be dissolved at the end of this academic year following the retirement of Professor Jun Rekimoto. Accordingly, this year’s event will mark the final Open House of the Rekimoto Laboratory. We would be most honored by your attendance.</p>
+              <p>暦本研究室・石黒研究室（東京大学大学院情報学環）合同のオープンハウスを開催いたします。<br>暦本研究室では、人間や人工物がそれぞれの能力を時間・空間の制約を超えて活用する、Human AugmentationやInternet of Abilities(IoA)という概念を提唱し、様々な研究を展開しています。<br>石黒研究室では、上記コンセプトに加え、自動運転技術と人との関係、自律移動体技術を活用したさまざまなアプリケーションの可能性も探索し、具現化する研究を行っています。<br>オープンハウスでは、これらの考えに基づいた研究成果を中心に、各種研究を展示いたします。<br>なお、暦本研究室は、暦本純一教授の退官に伴い、本年度をもって解散いたします。暦本研究室のオープンハウスは今年が最後となりますので、ぜひお立ち寄りいただけますと幸いです。<br><br>We are pleased to announce that the Rekimoto Laboratory and the Ishiguro Laboratory of the Interfaculty Initiative in Information Studies, The University of Tokyo, will jointly host an Open House.<br>The Rekimoto Laboratory has advanced research under the concepts of Human Augmentation and the Internet of Abilities (IoA), which seek to enable both humans and artifacts to transcend the limitations of time and space in order to fully realize their potential.<br>The Ishiguro Laboratory, in addition to engaging with these concepts, conducts research that explores and materializes the possibilities of autonomous driving technologies, human–technology interaction, and applications utilizing autonomous mobile systems.<br>At the Open House, a wide range of research achievements will be presented, with particular emphasis on projects grounded in these approaches.<br>Please be advised that the Rekimoto Laboratory will be dissolved at the end of this academic year following the retirement of Professor Jun Rekimoto. Accordingly, this year’s event will mark the final Open House of the Rekimoto Laboratory. We would be most honored by your attendance.</p>
             </div>
           </div>
           
@@ -604,7 +610,7 @@
             <ul class="list">
               <li>13:00 開場</li>
               <li>13:00–17:00 デモ & ポスター</li>
-              <li>17:00–18:00 講演 (石黒 祥生准教授)</li>
+              <li>17:00–18:00 講演 (石黒研講演)</li>
             </ul>
           </div>
           <div>
@@ -612,7 +618,7 @@
             <ul class="list">
               <li>11:00 開場</li>
               <li>11:00–17:00 デモ & ポスター</li>
-              <li>17:00–18:00 講演 (暦本 純一教授)</li>
+              <li>17:00–18:00 講演 (暦本研講演)</li>
               <li>18:30– 懇親会（ @ Capo PELLICANO 〈カポ・ペリカーノ〉本郷店／医学部教育研究棟13階）</li>
             </ul>
           </div>
@@ -681,7 +687,7 @@
         <h2>展示内容</h2>
         <div class="grid auto-fit">
           <div class="card stack">
-            <p>Comming Soon</p>
+            <p>Coming Soon</p>
           </div>
         </div>
       </div>
@@ -693,7 +699,7 @@
         <h2>メンバー</h2>
         <div class="grid auto-fit">
           <div class="card stack">
-            <p>Comming Soon</p>
+            <p>Coming Soon</p>
           </div>
         </div>
       </div>
@@ -740,22 +746,17 @@
         <!-- 2. SNS共有 -->
         <div class="stack">
           <b>SNS</b>
-          <div class="cluster" style="align-items: flex-start;">
-            <a href="#" aria-label="X"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3l8.5 10L3 21h3l7-7.9L18.8 21H21l-8.3-9.6L21 3h-3l-6.4 7.3L7.7 3H3z" fill="currentColor"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <div class="socials">
+            <a class="social-link" href="#" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 3l8.5 10L3 21h3l7-7.9L18.8 21H21l-8.3-9.6L21 3h-3l-6.4 7.3L7.7 3H3z" fill="currentColor"/></svg>
+              <span>X</span>
+            </a>
+            <a class="social-link" href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              <span>Instagram</span>
+            </a>
           </div>
         </div>
-        
-        <!-- 3. アーカイブ -->
-        <div class="stack">
-          <b>アーカイブ</b>
-          <div class="stack" style="gap: 8px;">
-            <a href="https://rkmtlab.github.io/openhouse2022/" target="_blank" rel="noopener noreferrer">Open House 2022</a>
-            <a href="https://rkmtlab.github.io/openhouse2019/" target="_blank" rel="noopener noreferrer">Open House 2019</a>
-            <a href="https://rkmtlab.github.io/openhouse2016/" target="_blank" rel="noopener noreferrer">Open House 2016</a>
-          </div>
-        </div>
-        
         <!-- 4. 研究室リンク -->
         <div class="stack">
           <b>研究室</b>
