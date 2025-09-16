@@ -318,15 +318,66 @@
     @media (min-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+          "info info"
+          "empty empty"
+          "sns labs";
+      }
+      
+      .footer-info {
+        grid-area: info;
+      }
+      
+      .footer-empty {
+        grid-area: empty;
+        display: none; /* タブレットサイズでは空の列を非表示 */
+      }
+      
+      .footer-sns {
+        grid-area: sns;
+      }
+      
+      .footer-labs {
+        grid-area: labs;
+      }
+    }
+    
+    /* PCサイズでは4列表示 */
+    @media (min-width: 992px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "info empty sns labs";
+      }
+      
+      .footer-empty {
+        display: block; /* PCサイズでは空の列を表示 */
       }
     }
 
-    /* デスクトップサイズでは3列を均等表示 */
+    /* デスクトップサイズでは4列に変更し、左から2列目は空に */
     @media (min-width: 1024px) {
       .footer-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-areas: "info empty sns labs";
         align-items: start;
         column-gap: 32px;
+      }
+      
+      .footer-info {
+        grid-area: info;
+      }
+      
+      .footer-empty {
+        grid-area: empty;
+        display: block; /* 空の列を表示 */
+      }
+      
+      .footer-sns {
+        grid-area: sns;
+      }
+      
+      .footer-labs {
+        grid-area: labs;
       }
     }
 
@@ -347,6 +398,31 @@
     .social-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; line-height: 1.6; font-weight: 500; }
     .social-link:hover { color: var(--brand); text-decoration: underline; }
     .social-link svg { width: 20px; height: 20px; }
+    
+    /* シェアボタンのスタイル */
+    .share-buttons {
+      margin-top: 12px;
+    }
+    
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .share-btn:hover {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
 
     /* 中央寄せの大きめボタン */
     .centered-btn {
@@ -760,7 +836,7 @@
       <!-- フッターを4カラムのグリッドに変更 -->
       <div class="footer-grid">
         <!-- 1. タイトルとお問い合わせ -->
-        <div class="stack">
+        <div class="stack footer-info">
           <b>Rekimoto Lab. × Ishiguro Lab. Open House 2025</b>
           <small>お問い合わせ： rkmtlab+openhouse2025atgmail.com（<span class="kbd">at</span> → <span class="kbd">@</span>）</small>
           
@@ -779,8 +855,13 @@
           </div>
         </div>
         
-        <!-- 2. SNS共有 -->
-        <div class="stack">
+        <!-- 空の列 (左から2列目) -->
+        <div class="footer-empty">
+          <!-- 意図的に空の列 -->
+        </div>
+        
+        <!-- 3. SNS共有 (右側に寄せる) -->
+        <div class="stack footer-sns">
           <b>SNS</b>
           <div class="socials">
             <a class="social-link" href="#" aria-label="X">
@@ -793,8 +874,9 @@
             </a>
           </div>
         </div>
-        <!-- 4. 研究室リンク -->
-        <div class="stack">
+        
+        <!-- 4. 研究室リンク (右側に寄せる) -->
+        <div class="stack footer-labs">
           <b>研究室</b>
           <div class="stack" style="gap: 8px;">
             <a href="https://lab.rekimoto.org/" target="_blank" rel="noopener noreferrer">暦本研究室 TOP</a>
