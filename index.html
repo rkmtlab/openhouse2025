@@ -691,6 +691,7 @@
           <li><a href="#schedule" data-scroll>スケジュール</a></li>
           <li><a href="#venue" data-scroll>会場</a></li>
           <li><a href="#demos" data-scroll>展示内容</a></li>
+          <li><a href="#talks" data-scroll>講演内容</a></li>
           <li><a class="btn" href="https://rkmt-ishiguro-openhouse-2025.peatix.com" target="_blank" rel="noopener noreferrer">参加登録</a></li>
         </ul>
       </nav>
@@ -842,6 +843,18 @@
       </div>
     </section>
 
+    <!-- 講演内容 -->
+    <section id="talks">
+      <div class="container">
+        <h2>講演内容</h2>
+        <div class="grid auto-fit">
+          <div class="card stack">
+            <p>Coming Soon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
 
     <!-- 参加登録（同一ページ内） -->
@@ -984,7 +997,7 @@
     });
     
     // In-page nav current state
-    const sections = ["home","overview", "schedule","venue","demos","register"]; // used for aria-current
+    const sections = ["home","overview", "schedule","venue","demos","talks","register"]; // used for aria-current
     const setCurrent = () => {
       if (typeof main !== 'undefined' && main && main.hidden) return;
       const y = window.scrollY + 120; // offset for sticky header
