@@ -651,6 +651,130 @@
       color: var(--muted);
       margin-top: 8px;
     }
+
+    /* 講演セクションのスタイル */
+    .lecture-header {
+      margin-bottom: 16px;
+    }
+
+    .lecture-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .lecture-date {
+      font-weight: 700;
+      color: var(--brand);
+      font-size: 0.9rem;
+    }
+
+    .lecture-venue {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .lecture-speaker {
+      margin: 2px 0;
+      padding: 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      border-left: 4px solid var(--brand);
+    }
+
+    .speaker-info h4 {
+      margin: 0 0 4px;
+      color: var(--brand);
+      font-size: 1.1rem;
+    }
+
+    .speaker-affiliation {
+      margin: 0 0 8px;
+      color: var(--ink-2);
+      font-size: 0.9rem;
+    }
+
+    .speaker-bio {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .lecture-content {
+      margin-top: 16px;
+    }
+
+    .lecture-content p {
+      margin: 0 0 12px;
+      line-height: 1.6;
+    }
+
+    .lecture-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    /* モバイル向け調整 */
+    @media (max-width: 767px) {
+      .lecture-meta {
+        flex-direction: column;
+      }
+      
+      .lecture-speaker {
+        margin: 12px 0;
+        padding: 10px;
+      }
+    }
+
+    /* Demos: 上段=サムネ＋タイトル、下段=説明＋ボタン（全幅） */
+    .demo-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      grid-template-areas:
+        "thumb title"
+        "desc  desc";
+      grid-auto-rows: auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .teaser { grid-area: thumb; margin: 0; width: 110px; height: 78px; overflow: hidden; border-radius: 8px; }
+    .teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .demo-head { grid-area: title; align-self: start; margin-bottom: 20px; }
+    .demo-body { grid-area: desc; display: grid; gap: 8px; align-content: start; }
+    .demo-body p { margin: 0; }
+
+    @media (max-width: 767px) {
+      .demo-head {
+      margin-bottom: 10px;
+      }
+      .demo-card { grid-template-columns: 88px 1fr; gap: 10px; }
+      .teaser { width: 88px; height: 64px; }
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--ink-2);
+    }
+    
+    .coming-soon p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* Dialog: teaser + speaker meta */
+    .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .detail-teaser { margin: 0; width: 120px; height: 80px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
+    .detail-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .detail-meta { display: grid; gap: 6px; }
+    .detail-title { margin: 0; font-weight: 700; }
+    .detail-speaker { color: var(--muted); font-size: .9rem; display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
   <link rel="canonical" href="https://rkmtlab.github.io/openhouse2025/">
   <meta property="og:url" content="https://rkmtlab.github.io/openhouse2025/">
@@ -836,11 +960,57 @@
     <section id="demos">
       <div class="container">
         <h2>展示内容</h2>
-        <div class="grid auto-fit">
-          <div class="card stack">
-            <p>Coming Soon</p>
-          </div>
+        <div class="coming-soon">
+          <p>Coming Soon...</p>
         </div>
+        <!-- 
+        <div class="grid auto-fit">
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">Holoarm</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">Holoarm</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">Holoarm</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+        </div>
+        -->
       </div>
     </section>
 
@@ -849,8 +1019,61 @@
       <div class="container">
         <h2>講演内容</h2>
         <div class="grid auto-fit">
+          <!-- 暦本先生の講演 -->
           <div class="card stack">
-            <p>Coming Soon</p>
+            <div class="lecture-header">
+              <h3>SFから考えるHCI/AI研究の未来</h3>
+              <div class="lecture-meta">
+                <span class="lecture-date">11月16日(日) 17:00-18:00</span>
+                <span class="lecture-venue">福武ラーニングシアター</span>
+              </div>
+              <h4>登壇者</h4>
+              <div class="lecture-speaker">
+                <div class="speaker-info">
+                  <h4>樋口 恭介 氏</h4>
+                  <p class="speaker-affiliation">作家・東京大学客員准教授</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>樋口 啓太 氏</h4>
+                  <p class="speaker-affiliation">SB Intuitions</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>暦本 純一 氏</h4>
+                <p class="speaker-affiliation">東京大学大学院情報学環教授・ソニーCSL京都</p>
+                </div>
+              </div>
+            </div>
+            <div class="lecture-content">
+              <p>TBD</p>
+            </div>
+          </div>
+    
+          <!-- 石黒先生の講演 -->
+          <div class="card stack">
+            <div class="lecture-header">
+              <h3>HCI・ユビキタスと移動体</h3>
+              <div class="lecture-meta">
+                <span class="lecture-date">11月15日(土) 17:00-18:00</span>
+                <span class="lecture-venue">福武ラーニングシアター</span>
+              </div>
+              <h4>登壇者</h4>
+              <div class="lecture-speaker">
+              <div class="speaker-info">
+                <h4>米澤 拓郎 氏</h4>
+                <p class="speaker-affiliation">名古屋大学大学院工学研究科准教授</p>
+              </div>
+              <div class="speaker-info">
+                <h4>横窪 安奈 氏</h4>
+                <p class="speaker-affiliation">東京大学大学院情報学環助教</p>
+              </div>
+              <div class="speaker-info">
+                <h4>石黒 祥生 氏</h4>
+                <p class="speaker-affiliation">東京大学大学院情報学環准教授</p>
+              </div>
+            </div>
+            <div class="lecture-content">
+              <p>石黒研究室で取り組んでいるHCIや自律移動体を活用したアプリケーション研究のご紹介と、HCI分野ユビキタス分野でご活躍の若手研究者の皆様と、これからの移動体活用に関するディスカッションを行います。</p>
+            </div>
           </div>
         </div>
       </div>
@@ -929,34 +1152,58 @@
   </footer>
 
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
-  <template id="detail-voice">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
-      <p><b>Voice Messaging</b> は、音声の収集・変換・共有を高速に往復できるメッセージング体験を提案します。会場では録音→可視化→再生までの一連の流れを体験できます。</p>
-      <ul>
-        <li>研究背景：非言語情報を含む音声の活用</li>
-        <li>技術要素：音声特徴抽出、リアルタイム処理</li>
-        <li>体験時間：1〜2分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
-  <template id="detail-unitree">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
-      <p><b>UniTree Robot</b> は、機動性の高いロボットを用いた遠隔協働デモです。実機の基本動作、遠隔からの操作、センサデータの可視化を体験できます。</p>
-      <ul>
-        <li>研究背景：Human Augmentation における身体拡張</li>
-        <li>技術要素：遠隔制御、安定歩行、自己位置推定</li>
-        <li>体験時間：2〜3分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
-  <template id="detail-nose">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
-      <p><b>NoseDirection</b> は、鼻先方向推定を用いた直感的な視点共有／ポインティング手法のデモです。スクリーン上のカーソルが顔の向きと同期します。</p>
-      <ul>
-        <li>研究背景：視線・頭部姿勢を用いたヒューマンインタフェース</li>
-        <li>技術要素：顔特徴点検出、方向ベクトルの推定</li>
-        <li>体験時間：1〜2分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
 
