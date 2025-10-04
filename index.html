@@ -755,6 +755,19 @@
       .teaser { width: 88px; height: 64px; }
     }
 
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--ink-2);
+    }
+    
+    .coming-soon p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0;
+    }
+
     /* Dialog: teaser + speaker meta */
     .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
     .detail-teaser { margin: 0; width: 120px; height: 80px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
@@ -947,8 +960,11 @@
     <section id="demos">
       <div class="container">
         <h2>展示内容</h2>
+        <div class="coming-soon">
+          <p>Coming Soon...</p>
+        </div>
+        <!-- 
         <div class="grid auto-fit">
-          <!-- Demo card template: data-title + data-detail target -->
           <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
             <div class="demo-card">
               <figure class="teaser">
@@ -994,6 +1010,7 @@
             </div>
           </article>
         </div>
+        -->
       </div>
     </section>
 
