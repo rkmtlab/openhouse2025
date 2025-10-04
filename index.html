@@ -949,10 +949,10 @@
         <h2>展示内容</h2>
         <div class="grid auto-fit">
           <!-- Demo card template: data-title + data-detail target -->
-          <article class="card demo" data-title="Holoarm" data-detail="#detail-voice">
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
             <div class="demo-card">
               <figure class="teaser">
-                <img src="assets/teasers/voice-messaging.jpg" alt="Voice Messaging のティーザー画像" loading="lazy">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
                 <h3 style="margin:0">Holoarm</h3>
@@ -964,31 +964,31 @@
             </div>
           </article>
 
-          <article class="card demo" data-title="UniTree Robot" data-detail="#detail-unitree">
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
             <div class="demo-card">
               <figure class="teaser">
-                <img src="assets/teasers/unitree-robot.jpg" alt="UniTree Robot のティーザー画像" loading="lazy">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
-                <h3 style="margin:0">UniTree Robot</h3>
+                <h3 style="margin:0">Holoarm</h3>
               </div>
               <div class="demo-body">
-                <p>機動性の高いロボットプラットフォームを用いた遠隔協働デモ。</p>
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
                 <button class="btn ghost" type="button">詳細を見る</button>
               </div>
             </div>
           </article>
 
-          <article class="card demo" data-title="NoseDirection" data-detail="#detail-nose">
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
             <div class="demo-card">
               <figure class="teaser">
-                <img src="assets/teasers/nose-direction.jpg" alt="NoseDirection のティーザー画像" loading="lazy">
+                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
-                <h3 style="margin:0">NoseDirection</h3>
+                <h3 style="margin:0">Holoarm</h3>
               </div>
               <div class="demo-body">
-                <p>視線や鼻先方向推定に基づく直感的インタラクション。</p>
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
                 <button class="btn ghost" type="button">詳細を見る</button>
               </div>
             </div>
@@ -1135,11 +1135,11 @@
   </footer>
 
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
-  <template id="detail-voice">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
       <div class="detail-head">
         <figure class="detail-teaser">
-          <img src="assets/teasers/voice-messaging.jpg" alt="Voice Messaging のティーザー画像" loading="lazy">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
         </figure>
         <div class="detail-meta">
           <b class="detail-title">HoloArm</b>
@@ -1149,28 +1149,44 @@
           </div>
         </div>
       </div>
-      <p>HoloArmは、ユーザーの顔の向きに応じて自動立体視ディスプレイを動的に調整し、メガネやヘッドセットのような装置を必要とせずに、広い視野角と自由な視聴ゾーンを実現します。</p>
-      <p>HoloArm dynamically adjusts the autostereoscopic display according to the user’s face orientation, achieving a wide viewing angle and a free viewing zone without needing devices like glasses or a headset. 
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
-  <template id="detail-unitree">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
-      <p><b>UniTree Robot</b> は、機動性の高いロボットを用いた遠隔協働デモです。実機の基本動作、遠隔からの操作、センサデータの可視化を体験できます。</p>
-      <ul>
-        <li>研究背景：Human Augmentation における身体拡張</li>
-        <li>技術要素：遠隔制御、安定歩行、自己位置推定</li>
-        <li>体験時間：2〜3分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
-  <template id="detail-nose">
+  <template id="detail-holoarm">
     <div class="dialog-body prose">
-      <p><b>NoseDirection</b> は、鼻先方向推定を用いた直感的な視点共有／ポインティング手法のデモです。スクリーン上のカーソルが顔の向きと同期します。</p>
-      <ul>
-        <li>研究背景：視線・頭部姿勢を用いたヒューマンインタフェース</li>
-        <li>技術要素：顔特徴点検出、方向ベクトルの推定</li>
-        <li>体験時間：1〜2分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
+      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
 
