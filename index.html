@@ -754,6 +754,14 @@
       .demo-card { grid-template-columns: 88px 1fr; gap: 10px; }
       .teaser { width: 88px; height: 64px; }
     }
+
+    /* Dialog: teaser + speaker meta */
+    .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .detail-teaser { margin: 0; width: 120px; height: 80px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
+    .detail-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .detail-meta { display: grid; gap: 6px; }
+    .detail-title { margin: 0; font-weight: 700; }
+    .detail-speaker { color: var(--muted); font-size: .9rem; display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
   <link rel="canonical" href="https://rkmtlab.github.io/openhouse2025/">
   <meta property="og:url" content="https://rkmtlab.github.io/openhouse2025/">
@@ -941,16 +949,16 @@
         <h2>展示内容</h2>
         <div class="grid auto-fit">
           <!-- Demo card template: data-title + data-detail target -->
-          <article class="card demo" data-title="Voice Messaging" data-detail="#detail-voice">
+          <article class="card demo" data-title="Holoarm" data-detail="#detail-voice">
             <div class="demo-card">
               <figure class="teaser">
                 <img src="assets/teasers/voice-messaging.jpg" alt="Voice Messaging のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
-                <h3 style="margin:0">Voice Messaging</h3>
+                <h3 style="margin:0">Holoarm</h3>
               </div>
               <div class="demo-body">
-                <p>音声コミュニケーションを拡張するメッセージング体験のプロトタイプ。</p>
+                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
                 <button class="btn ghost" type="button">詳細を見る</button>
               </div>
             </div>
@@ -1125,12 +1133,20 @@
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
   <template id="detail-voice">
     <div class="dialog-body prose">
-      <p><b>Voice Messaging</b> は、音声の収集・変換・共有を高速に往復できるメッセージング体験を提案します。会場では録音→可視化→再生までの一連の流れを体験できます。</p>
-      <ul>
-        <li>研究背景：非言語情報を含む音声の活用</li>
-        <li>技術要素：音声特徴抽出、リアルタイム処理</li>
-        <li>体験時間：1〜2分</li>
-      </ul>
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/voice-messaging.jpg" alt="Voice Messaging のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">HoloArm</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">田堂 皓也</span>
+          </div>
+        </div>
+      </div>
+      <p>HoloArmは、ユーザーの顔の向きに応じて自動立体視ディスプレイを動的に調整し、メガネやヘッドセットのような装置を必要とせずに、広い視野角と自由な視聴ゾーンを実現します。</p>
+      <p>HoloArm dynamically adjusts the autostereoscopic display according to the user’s face orientation, achieving a wide viewing angle and a free viewing zone without needing devices like glasses or a headset. 
     </div>
   </template>
   <template id="detail-unitree">
