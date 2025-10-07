@@ -46,7 +46,7 @@
     .stack { display: grid; gap: 12px; }
     .grid { display: grid; gap: var(--gap); }
     .two-col { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
-    .grid.auto-fit { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid.auto-fit { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: start; }
     .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: clamp(16px, 2.2vw, 24px); }
 
     .btn {
@@ -653,8 +653,39 @@
     }
 
     /* 講演セクションのスタイル */
+    #talks .grid.auto-fit {
+      grid-auto-rows: auto;
+    }
+    
+    /* PC表示時のみカードの高さを揃える */
+    @media (min-width: 768px) {
+      #talks .grid.auto-fit {
+        grid-auto-rows: 1fr;
+      }
+      
+      #talks .card {
+        height: 100%;
+      }
+    }
+    
+    #talks .card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    #talks .card > * {
+      width: 100%;
+    }
+    
     .lecture-header {
       margin-bottom: 16px;
+    }
+
+    .lecture-header h4 {
+      margin: 16px 0 8px;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     .lecture-meta {
@@ -703,12 +734,19 @@
     }
 
     .lecture-content {
-      margin-top: 16px;
+      margin-top: 0px;
     }
 
     .lecture-content p {
-      margin: 0 0 12px;
+      margin: 0;
       line-height: 1.6;
+    }
+    
+    /* 講演カード内の「概要」見出しのスタイル */
+    #talks .card h4:not(.lecture-header h4):not(.speaker-info h4) {
+      margin: 4px 0 2px;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     .lecture-tags {
@@ -1019,35 +1057,6 @@
       <div class="container">
         <h2>講演内容</h2>
         <div class="grid auto-fit">
-          <!-- 暦本先生の講演 -->
-          <div class="card stack">
-            <div class="lecture-header">
-              <h3>SFから考えるHCI/AI研究の未来</h3>
-              <div class="lecture-meta">
-                <span class="lecture-date">11月16日(日) 17:00-18:00</span>
-                <span class="lecture-venue">福武ラーニングシアター</span>
-              </div>
-              <h4>登壇者</h4>
-              <div class="lecture-speaker">
-                <div class="speaker-info">
-                  <h4>樋口 恭介 氏</h4>
-                  <p class="speaker-affiliation">作家・東京大学客員准教授</p>
-                </div>
-                <div class="speaker-info">
-                  <h4>樋口 啓太 氏</h4>
-                  <p class="speaker-affiliation">SB Intuitions</p>
-                </div>
-                <div class="speaker-info">
-                  <h4>暦本 純一 氏</h4>
-                <p class="speaker-affiliation">東京大学大学院情報学環教授・ソニーCSL京都</p>
-                </div>
-              </div>
-            </div>
-            <div class="lecture-content">
-              <p>TBD</p>
-            </div>
-          </div>
-    
           <!-- 石黒先生の講演 -->
           <div class="card stack">
             <div class="lecture-header">
@@ -1058,21 +1067,53 @@
               </div>
               <h4>登壇者</h4>
               <div class="lecture-speaker">
-              <div class="speaker-info">
-                <h4>米澤 拓郎 氏</h4>
-                <p class="speaker-affiliation">名古屋大学大学院工学研究科准教授</p>
-              </div>
-              <div class="speaker-info">
-                <h4>横窪 安奈 氏</h4>
-                <p class="speaker-affiliation">東京大学大学院情報学環助教</p>
-              </div>
-              <div class="speaker-info">
-                <h4>石黒 祥生 氏</h4>
-                <p class="speaker-affiliation">東京大学大学院情報学環准教授</p>
+                <div class="speaker-info">
+                  <h4>米澤 拓郎 氏</h4>
+                  <p class="speaker-affiliation">名古屋大学大学院工学研究科准教授</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>横窪 安奈 氏</h4>
+                  <p class="speaker-affiliation">東京大学大学院情報学環助教</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>石黒 祥生 氏</h4>
+                  <p class="speaker-affiliation">東京大学大学院情報学環准教授</p>
+                </div>
               </div>
             </div>
+            <h4>概要</h4>
             <div class="lecture-content">
               <p>石黒研究室で取り組んでいるHCIや自律移動体を活用したアプリケーション研究のご紹介と、HCI分野ユビキタス分野でご活躍の若手研究者の皆様と、これからの移動体活用に関するディスカッションを行います。</p>
+            </div>
+          </div>
+    
+          <!-- 暦本先生の講演 -->
+          <div class="card stack">
+            <div class="lecture-header">
+              <h3>SF的思考で未来のAI/HCIを考える</h3>
+              <div class="lecture-meta">
+                <span class="lecture-date">11月16日(日) 17:00-18:00</span>
+                <span class="lecture-venue">福武ラーニングシアター</span>
+              </div>
+              <h4>登壇者</h4>
+              <div class="lecture-speaker">
+                <div class="speaker-info">
+                  <h4>樋口 恭介 氏</h4>
+                  <p class="speaker-affiliation">作家・東京大学大学院情報学環客員准教授</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>樋口 啓太 氏</h4>
+                  <p class="speaker-affiliation">SB Intuitions Lead Research Scientist</p>
+                </div>
+                <div class="speaker-info">
+                  <h4>暦本 純一 氏</h4>
+                  <p class="speaker-affiliation">東京大学大学院情報学環教授・ソニーCSL フェロー/CSO</p>
+                </div>
+              </div>
+            </div>
+            <h4>概要</h4>
+            <div class="lecture-content">
+              <p>AIの発展、人間とAIの融合, その未来社会への影響..これらのテーマはSF的思考なくしては語れません。AIにSFを執筆させる試みなども交え、研究を発展させるための「思考のストッパーはずし」としてのSFについて議論します。</p>
             </div>
           </div>
         </div>
