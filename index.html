@@ -644,6 +644,22 @@
       );
       margin-top: 4px;
     }
+
+    #demos .grid.auto-fit {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1024px) {
+      #demos .grid.auto-fit {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      #demos .grid.auto-fit {
+        grid-template-columns: 1fr;
+      }
+    }
     
     /* スケジュール末尾の注意書き */
     .schedule-note {
@@ -779,11 +795,22 @@
       gap: 12px;
       align-items: start;
     }
-    .teaser { grid-area: thumb; margin: 0; width: 110px; height: 78px; overflow: hidden; border-radius: 8px; }
-    .teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .demo-head { grid-area: title; align-self: start; margin-bottom: 20px; }
+    .teaser { grid-area: thumb; margin: 0; width: 110px; height: 110px; border-radius: 8px; overflow: hidden; background: var(--card); display: grid; place-items: center;}
+    .teaser img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+    .demo-head { grid-area: title; align-self: start; margin-bottom: 20px; min-width: 0; }
     .demo-body { grid-area: desc; display: grid; gap: 8px; align-content: start; }
     .demo-body p { margin: 0; }
+
+    /* 長い単語や英語でも折り返し・省略 */
+    .demo-head h3 {
+      max-width: 100%;
+      overflow: hidden;
+      overflow-wrap: anywhere; /* or word-break: break-word; */
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;   /* 3行で切る（必要に応じて調整） */
+      -webkit-box-orient: vertical;
+    }
 
     @media (max-width: 767px) {
       .demo-head {
@@ -808,7 +835,7 @@
 
     /* Dialog: teaser + speaker meta */
     .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
-    .detail-teaser { margin: 0; width: 120px; height: 80px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
+    .detail-teaser { margin: 0; width: 120px; height: 120px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
     .detail-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .detail-meta { display: grid; gap: 6px; }
     .detail-title { margin: 0; font-weight: 700; }
@@ -1030,16 +1057,46 @@
       <div class="container">
         <h2>展示内容</h2>
         <div class="grid auto-fit">
-          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
+          <article class="card demo" data-title="BeamingAR" data-detail="#detail-beamingar">
             <div class="demo-card">
               <figure class="teaser">
-                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
+                <img src="assets/teasers/beamingar.jpg" alt="BeamingAR のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
-                <h3 style="margin:0">Holoarm</h3>
+                <h3 style="margin:0">BeamingAR</h3>
               </div>
               <div class="demo-body">
-                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
+                <p> </br>軽量・無電源ARディスプレイ</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="Serendipity Wall" data-detail="#detail-serendipitywall">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/serendipitywall.jpeg" alt="Serendipity Wall のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">Serendipity Wall</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>議論支援システム</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="SkillsInterpreter" data-detail="#detail-skillsinterpreter">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/skillsinterpreter.png" alt="SkillsInterpreter のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">SkillsInterpreter</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>柔術教則動画の技能構造に基づくブラウジング</p>
                 <button class="btn ghost" type="button">詳細を見る</button>
               </div>
             </div>
@@ -1060,16 +1117,91 @@
             </div>
           </article>
 
-          <article class="card demo" data-title="Holoarm" data-detail="#detail-holoarm">
+          <article class="card demo" data-title="Dance with Rhythmic Frames" data-detail="#detail-dancewithrhythmicframes">
             <div class="demo-card">
               <figure class="teaser">
-                <img src="assets/teasers/holoarm.jpg" alt="Holoarm のティーザー画像" loading="lazy">
+                <img src="assets/teasers/dancewithrhythmicframes.png" alt="Dance with Rhythmic Frames のティーザー画像" loading="lazy">
               </figure>
               <div class="demo-head">
-                <h3 style="margin:0">Holoarm</h3>
+                <h3 style="margin:0">Dance with Rhythmic Frames</h3>
               </div>
               <div class="demo-body">
-                <p> </br>顔追従型裸眼立体視ディスプレイ</p>
+                <p> </br>動画からキーポーズを抽出し、音楽のリズムに合わせてコマ送りで提示するダンス学習手法</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="MotionTales" data-detail="#detail-motiontales">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/motiontales.png" alt="MotionTales のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">MotionTales</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>身体活動を取り入れた小学校教育を支援するデジタル教材</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="NoseKnowsNorth" data-detail="#detail-noseknowsnorth">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/noseknowsnorth.png" alt="Nose Knows North のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">NoseKnowsNorth</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>目と耳に頼らずに、鼻を振動させて方向を伝えるメガネ型デバイス</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="ParaTalk" data-detail="#detail-paratalk">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/paratalk.png" alt="ParaTalk のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">ParaTalk</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>非言語音声によるリアルタイム対話システム</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="ClothTalk" data-detail="#detail-clothtalk">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/clothtalk.png" alt="ClothTalk のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">ClothTalk</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>うるさい環境でも自分の声だけを入力できるフレキシブルなマイク</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demo" data-title="SynVoice" data-detail="#detail-synvoice">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/synvoice.png" alt="SynVoice のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">SynVoice</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>音声を聞きながら相槌を打つことが可能なボイスメッセージアプリ</p>
                 <button class="btn ghost" type="button">詳細を見る</button>
               </div>
             </div>
@@ -1246,22 +1378,57 @@
   </footer>
 
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
-  <template id="detail-holoarm">
+  <template id="detail-beamingar">
     <div class="dialog-body prose">
       <div class="detail-head">
         <figure class="detail-teaser">
-          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+          <img src="assets/teasers/beamingar.jpg" alt="BeamingAR のティーザー画像" loading="lazy">
         </figure>
         <div class="detail-meta">
-          <b class="detail-title">HoloArm</b>
+          <b class="detail-title">Beaming AR</b>
           <div class="detail-author"
             <span class="affiliation">暦本研究室</span>
-            <span class="name">田堂 皓也</span>
+            <span class="name">青木 大登</span>
           </div>
         </div>
       </div>
-      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
-      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
+      <p>Beaming ARは、環境側に配置したプロジェクターからユーザーが身に着けるアイウェアに向かって映像を投影することで、アイウェアを軽量でバッテリー不要とすることを実現する新しいAR映像提示方式です。</p>
+      <p>Beaming AR is a novel AR display approach that projects images from environment-mounted projectors onto user-worn eyewear, enabling lightweight, battery-free glasses.
+    </div>
+  </template>
+  <template id="detail-serendipitywall">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/serendipitywall.jpeg" alt="Serendipity Wall のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">Serendipity Wall</b>
+          <div class="detail-author"
+            <span class="affiliation">石黒研究室</span>
+            <span class="name">今村 翔太</span>
+          </div>
+        </div>
+      </div>
+      <p>研究のディスカッションをしている最中に、会話の内容から関連研究を探索し、内容を要約してティザー画像等と合わせて整理して表示します。会話の最中に新しい知見をお届けすることで、新しい発見に繋げたり、議論を深める支援を行います。</p>
+      <p>During research discussions, the system analyzes the conversation in real time to discover related studies, summarizes their contents, and presents them together with teaser images and other visuals. By introducing new insights during the discussion, it supports deeper exploration and helps spark new discoveries.
+  </template>
+  <template id="detail-skillsinterpreter">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/skillsinterpreter.png" alt="SkillsInterpreter のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">SkillsInterpreter</b>
+          <div class="detail-author"
+            <span class="affiliation">石黒研究室</span>
+            <span class="name">大森 功太郎</span>
+          </div>
+        </div>
+      </div>
+      <p>柔術のような対人格闘技では状況変化に応じた判断が求められます。SkillsInterpreterは、教則動画から大規模言語モデルによって状況判断の分岐構造を抽出し、技能の構造ベースでのビデオブラウジングを実現します。</p>
+      <p>In martial arts such as Jiu-Jitsu, practitioners should make context-dependent decisions. SkillsInterpreter extracts branching structures of situational judgment from instructional videos using large language models, enabling structure-based video browsing of skills.
     </div>
   </template>
   <template id="detail-holoarm">
@@ -1282,22 +1449,116 @@
       <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
     </div>
   </template>
-  <template id="detail-holoarm">
+  <template id="detail-dancewithrhythmicframes">
     <div class="dialog-body prose">
       <div class="detail-head">
         <figure class="detail-teaser">
-          <img src="assets/teasers/holoarm.jpg" alt="HoloArm のティーザー画像" loading="lazy">
+          <img src="assets/teasers/dancewithrhythmicframes.png" alt="Dance with Rhythmic Frames のティーザー画像" loading="lazy">
         </figure>
         <div class="detail-meta">
-          <b class="detail-title">HoloArm</b>
+          <b class="detail-title">Dance with Rhythmic Frames</b>
           <div class="detail-author"
-            <span class="affiliation">暦本研究室</span>
-            <span class="name">田堂 皓也</span>
+            <span class="affiliation">石黒研究室</span>
+            <span class="name">時田 聡実</span>
           </div>
         </div>
       </div>
-      <p>裸眼立体視ディスプレイは、裸眼で3D映像を見られるディスプレイですが、視野角の狭さが課題でした。本研究では、ディスプレイをロボットアームに搭載し、ユーザの頭部に追従させることで広い視野角を実現しています。</p>
-      <p>Autostereoscopic displays enable viewing 3D images without additional equipment, but narrow viewing angle has been a challenge. This research achieves a wide viewing angle by mounting the display on a robotic arm that tracks the user's head.
+      <p>動画からキーポーズを抽出し、音楽のリズムに合わせてコマ送りで提示するダンス学習手法を提案します。2Dと3Dの比較実験を通して、初心者でもリズム感と動作の正確さが向上することを示しました。</p>
+      <p>We propose DRF: Dance with Rhythmic Frames, a virtual reality application for dance learning by replaying key pose avatars in sync with rhythm with 3D motion trajectories extracted from dance videos. 
+    </div>
+  </template>
+  <template id="detail-motiontales">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/motiontales.png" alt="MotionTales のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">MotionTales</b>
+          <div class="detail-author"
+            <span class="affiliation">石黒研究室</span>
+            <span class="name">時田 聡実</span>
+          </div>
+        </div>
+      </div>
+      <p>MotionTalesは、物語の音読と身体表現運動を融合した小学校用MR教材です。児童の動きをリアルタイムで可視化し、創造性と表現力、学習意欲を高めることを目的としています。</p>
+      <p>A mixed-reality education tool that links storytelling with full-body movement. A camera and particle effects mirror gestures on screen, boosting engagement and creative expression in class.
+    </div>
+  </template>
+
+  <template id="detail-noseknowsnorth">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/noseknowsnorth.png" alt="Nose Knows North のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">NoseKnowsNorth</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">仲村 友杜</span>
+          </div>
+        </div>
+      </div>
+      <p>道案内では、歩行中に画面を見ることの危険性や、うるさい環境では音声案内が聞き取りにくいという課題があります。本研究では、メガネの鼻パッドを振動させることで、視覚や聴覚に頼らない方向提示を実現します。</p>
+      <p>In navigation, viewing screens while walking is risky, and audio guidance is hard to hear in noise. We present directional cues via vibrating eyeglass nose pads without relying on vision or hearing.
+    </div>
+  </template>
+
+  <template id="detail-paratalk">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/paratalk.png" alt="ParaTalk のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">ParaTalk</b>
+          <div class="detail-author"
+            <span class="affiliation">石黒研究室</span>
+            <span class="name">塙 桃</span>
+          </div>
+        </div>
+      </div>
+      <p>ParaTalk は、人の言語音声による発話に対して非言語音声でリアルタイムに応答する対話システムです。文脈に適した感情と意図を表す非言語音声をLLM を用いて選択し、応答することで実現しています。</p>
+      <p>ParaTalk is a real-time dialogue system that responds with nonverbal sounds to human speech. An LLM selects nonverbal audio conveying context-aware intent and triggers the appropriate response on cue.
+    </div>
+  </template>
+
+  <template id="detail-clothtalk">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/clothtalk.png" alt="ClothTalk のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">ClothTalk</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">平城 裕隆</span>
+          </div>
+        </div>
+      </div>
+      <p>リモート会議などは周囲がうるさい場所では利用しづらいという課題があります。本研究では、フレキシブルなマイク構造によって得られる指向性を用いて話者の声のみをリアルタイムに取得する手法を提案します。</p>
+      <p>Remote meetings are often difficult to use in noisy environments. We propose a flexible curved microphone that use its inherent directivity to capture only the speaker’s voice in real time.
+    </div>
+  </template>
+
+  <template id="detail-synvoice">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/synvoice.png" alt="SynVoice のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">SynVoice</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">藤村 彩紀</span>
+          </div>
+        </div>
+      </div>
+      <p>ボイスメッセージアプリ「SynVoice」は、メッセージ再生中に聞き手の相槌を即時録音し、元の音声に重ねて届けます。非同期会話にリアルタイムの反応を取り入れることで、話者間の共創性や共感性を高めます。</p>
+      <p>SynVoice is a voice messaging app that records the listener’s verbal backchannels during playback and layers them onto the original message. It enhances co-creation and empathy between speakers.
     </div>
   </template>
 
