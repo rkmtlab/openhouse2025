@@ -795,11 +795,18 @@
       gap: 12px;
       align-items: start;
     }
-    .teaser { grid-area: thumb; margin: 0; width: 110px; height: 110px; border-radius: 8px; overflow: hidden; background: var(--card); display: grid; place-items: center;}
+    .teaser { grid-area: thumb; margin: 0; width: 110px; height: 110px; border-radius: 8px; overflow: hidden; background: var(--bg); display: grid; place-items: center;}
     .teaser img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
     .demo-head { grid-area: title; align-self: start; margin-bottom: 20px; min-width: 0; }
     .demo-body { grid-area: desc; display: grid; gap: 8px; align-content: start; }
-    .demo-body p { margin: 0; }
+    .demo-body p {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;     /* 表示する行数 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(1em * 1.6 * 4); /* 行高 × 行数（line-heightが1.6想定） */
+      line-height: 1.6;
+    }
 
     /* 長い単語や英語でも折り返し・省略 */
     .demo-head h3 {
@@ -835,8 +842,8 @@
 
     /* Dialog: teaser + speaker meta */
     .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
-    .detail-teaser { margin: 0; width: 120px; height: 120px; overflow: hidden; border-radius: 8px; flex: 0 0 auto; }
-    .detail-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .detail-teaser { grid-area: thumb; margin: 0; width: 120px; height: 120px; border-radius: 8px; overflow: hidden; background: var(--bg); display: grid; place-items: center; }
+    .detail-teaser img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
     .detail-meta { display: grid; gap: 6px; }
     .detail-title { margin: 0; font-weight: 700; }
     .detail-speaker { color: var(--muted); font-size: .9rem; display: flex; gap: 8px; flex-wrap: wrap; }
