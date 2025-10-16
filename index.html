@@ -840,6 +840,22 @@
       margin: 0;
     }
 
+    /* 展示セクション注意書き */
+    .demo-notice {
+      text-align: left;
+      margin-top: clamp(24px, 4vw, 42px);
+      color: var(--ink-2);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      line-height: 1.6;
+    }
+    
+    /* タブレット以上では中央揃え */
+    @media (min-width: 768px) {
+      .demo-notice {
+        text-align: center;
+      }
+    }
+
     /* Dialog: teaser + speaker meta */
     .detail-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
     .detail-teaser { grid-area: thumb; margin: 0; width: 120px; height: 120px; border-radius: 8px; overflow: hidden; background: var(--bg); display: grid; place-items: center; }
@@ -1214,32 +1230,41 @@
             </div>
           </article>
         </div>
+        <p class="demo-notice">当サイトに掲載していない、未発表の研究も多数ございます。<br>会場では全ての研究・展示をご覧いただけますので、ぜひお越しください。</p>
       </div>
     </section>
 
     <!-- 展示メンバー -->
     <section id="demo-members">
       <div class="container">
-        <h2>展示メンバー</h2>
-        <div class="card">
-          <ul class="member-list">
-            <li>青木 大登</li>
-            <li>今村 翔太</li>
-            <li>大森 功太郎</li>
-            <li>河邑 瑛大</li>
-            <li>北岸 毅一</li>
-            <li>田京 大和</li>
-            <li>鄭 耀琳</li>
-            <li>田堂 皓也</li>
-            <li>時田 聡実</li>
-            <li>仲村 友杜</li>
-            <li>塙 桃</li>
-            <li>平城 裕隆</li>
-            <li>藤村 彩紀</li>
-            <li>堀 祐大朗</li>
-            <li>馬 辰瑞</li>
-            <li>南田 桂吾</li>
-          </ul>
+        <h2>発表メンバー</h2>
+        <div class="two-col" style="gap: var(--gap);">
+          <div class="card">
+            <h3>暦本研究室</h3>
+            <ul class="member-list">
+              <li>青木 大登</li>
+              <li>北岸 毅一</li>
+              <li>平城 裕隆</li>
+              <li>田堂 皓也</li>
+               <li>南田 桂吾</li>
+              <li>仲村 友杜</li>
+              <li>藤村 彩紀</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>石黒研究室</h3>
+            <ul class="member-list">
+              <li>大森 功太郎</li>
+              <li>今村 翔太</li>
+              <li>時田 聡実</li>
+              <li>塙 桃</li>
+              <li>鄭 耀琳</li>
+              <li>堀 祐大朗</li>
+              <li>河邑 瑛大</li>
+              <li>田京 大和</li>
+              <li>馬 辰瑞</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section> 
