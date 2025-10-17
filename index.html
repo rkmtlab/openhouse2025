@@ -1080,6 +1080,21 @@
       <div class="container">
         <h2>展示内容</h2>
         <div class="grid auto-fit">
+          <article class="card demo" data-title="StainedSweeper" data-detail="#detail-stainedsweeper">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/stainedsweeper.png" alt="StainedSweeper のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">StainedSweeper</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>小型な「光減衰型」光学シースルーHMD</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
           <article class="card demo" data-title="BeamingAR" data-detail="#detail-beamingar">
             <div class="demo-card">
               <figure class="teaser">
@@ -1242,6 +1257,7 @@
           <div class="card">
             <h3>暦本研究室</h3>
             <ul class="member-list">
+              <li>廣井 裕一</li>
               <li>青木 大登</li>
               <li>北岸 毅一</li>
               <li>平城 裕隆</li>
@@ -1255,6 +1271,7 @@
             <h3>石黒研究室</h3>
             <ul class="member-list">
               <li>大森 功太郎</li>
+              <li>西田 直人</li>
               <li>今村 翔太</li>
               <li>時田 聡実</li>
               <li>塙 桃</li>
@@ -1263,6 +1280,7 @@
               <li>河邑 瑛大</li>
               <li>田京 大和</li>
               <li>馬 辰瑞</li>
+              <li>向井 瑞希</li>
             </ul>
           </div>
         </div>
@@ -1410,6 +1428,24 @@
   </footer>
 
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
+  <template id="detail-stainedsweeper">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/stainedsweeper.png" alt="StainedSweeper のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">StainedSweeper</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">廣井 裕一</span>
+          </div>
+        </div>
+      </div>
+      <p>ステンドグラスのように入射光をフィルタリングし、実背景より暗い色を表示する光減衰型ディスプレイです。単一デバイスで色と輝度を同時制御することで大幅に小型化し、ウェアラブル化に適した構成を実現しました。</p>
+      <p>StainedSweeper is an optical see-through display that filters incoming light pixel by pixel to present images. Simultaneous control of color and intensity enables compact configurations suitable for wearable use.
+    </div>
+  </template>
   <template id="detail-beamingar">
     <div class="dialog-body prose">
       <div class="detail-head">
