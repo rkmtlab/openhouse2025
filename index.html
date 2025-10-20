@@ -1080,6 +1080,21 @@
       <div class="container">
         <h2>展示内容</h2>
         <div class="grid auto-fit">
+          <article class="card demo" data-title="Beyond Symbols" data-detail="#detail-beyondsymbols">
+            <div class="demo-card">
+              <figure class="teaser">
+                <img src="assets/teasers/BeyondSymbols.png" alt="Beyond Symbols のティーザー画像" loading="lazy">
+              </figure>
+              <div class="demo-head">
+                <h3 style="margin:0">Beyond Symbols</h3>
+              </div>
+              <div class="demo-body">
+                <p> </br>視覚的ガイダンスの新たな方向性</p>
+                <button class="btn ghost" type="button">詳細を見る</button>
+              </div>
+            </div>
+          </article>
+
           <article class="card demo" data-title="StainedSweeper" data-detail="#detail-stainedsweeper">
             <div class="demo-card">
               <figure class="teaser">
@@ -1429,6 +1444,24 @@
   </footer>
 
   <!-- 展示詳細（記事）テンプレート：各カードから参照される -->
+  <template id="detail-beyondsymbols">
+    <div class="dialog-body prose">
+      <div class="detail-head">
+        <figure class="detail-teaser">
+          <img src="assets/teasers/BeyondSymbols.png" alt="Beyond Symbols のティーザー画像" loading="lazy">
+        </figure>
+        <div class="detail-meta">
+          <b class="detail-title">Beyond Symbols: Motion Perception Cues Enhance Dual-Task Performance with Wearable Directional Guidance</b>
+          <div class="detail-author"
+            <span class="affiliation">暦本研究室</span>
+            <span class="name">張 清</span>
+          </div>
+        </div>
+      </div>
+      <p>矢印や音声コマンドといった従来の方向指示は、意識的な解釈が必要なため、特にマルチタスク（ながら作業）中は注意が散漫になりがちである。スマートグラスの表示でさえ、私たちの精神的負荷を高める記号に頼ることが少なくない。私たちの研究では、片方の目に微細な動きの感覚を生み出すことで案内を行う、新しい手法を提案する。これは「見る」よりも「感じる」直感的な方向指示であり、記号を理解する必要がない。もう片方の目の視界を遮ることなく、より直接的でスムーズに、そして注意をそらされずに移動できる、新しい案内方法を目指している。</p>
+      <p>Traditional directional cues, like arrows and voice commands, require conscious interpretation, which can be distracting, especially when multitasking. Even cues on smart glasses often rely on symbols that add to our mental load. Our research introduces a new method: providing guidance by creating a subtle sensation of motion in a single eye. This delivers an instinctive directional cue that is felt more than seen, bypassing the need for symbolic understanding. By keeping the other eye's view completely unobstructed, this approach aims to offer a more direct, seamless, and less distracting way to navigate the world.
+    </div>
+  </template>
   <template id="detail-stainedsweeper">
     <div class="dialog-body prose">
       <div class="detail-head">
